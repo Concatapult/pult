@@ -54,6 +54,10 @@ To be clear, transpiling client code is good and encouraged.
 
 The code structure that Concatapult generates is opinionated without apology. With that said, we are always seeking the best solution, so if you have a suggestion for improvement, please create an issue and we'll happily discuss.
 
+### Further Reading
+
+- [Don't over-engineer](https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8)
+- [Write code that is easy to delete](http://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)
 
 ## Modules
 
