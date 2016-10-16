@@ -1,5 +1,5 @@
 {
-  "name": "pult",
+  "name": "pult-cli",
   "version": "0.1.0",
   "description": "The command line node.js project generator.",
   "main": "index.js",
