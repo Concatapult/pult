@@ -27,7 +27,7 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
   }
 
   var totalConfig = Object.assign({}, baseConfig, moduleConfig)
-  vfs.copyTpl( $(`modules/${moduleName}/template/**`), baseConfig.projectRoot, totalConfig )
+  vfs.copyTpl( $(`modules/${moduleName}/template/{**,.*}`), baseConfig.projectRoot, totalConfig )
 
   return moduleConfig
 }

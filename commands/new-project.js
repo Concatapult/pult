@@ -3,7 +3,7 @@ var Path = require('path')
 
 module.exports = function createProject (vfs, baseConfig, projectName) {
   var dest = Path.resolve(baseConfig.cwd, projectName)
-  vfs.copyTpl( $('base-template/**'), dest, baseConfig )
+  vfs.copyTpl( $('base-template/{**,.*}'), dest, baseConfig )
 }
 
 //
