@@ -86,12 +86,20 @@ program
 
     co(function * () {
       yield call(vfs, 'commit')
-      // TODO: cd AND git init AND git add . AND git commit -m "First commit"
 
-      console.log("Created new project! `cd` into it and get started:\n")
-      console.log(`    cd ${projectName}`)
-      console.log(`    yarn`)
-      console.log(`    npm start\n`)
+      // "cd" into newly generated project folder
+      process.chdir('./' + projectName)
+
+      // Initialize some things
+      yield exec(`git`, ['init'])
+      yield exec(`git`, ['add', '.'])
+      yield exec(`git`, ['commit', '-m', `"First commit"`])
+
+      console.log("\nYour new project is ready! `cd` into it to get started:\n")
+      console.log(`    $ cd ${projectName}`)
+      console.log(`    $ yarn`)
+      console.log(`    $ npm start\n`)
+      console.log(`    $ pult add knex pg # optional; see docs for more modules\n`)
     })
       .then(exit(0), exit(1))
   })
