@@ -5,6 +5,7 @@ process.env.NODE_ENV = 'test'
 // Example:
 //  var User = require(__server + '/models/user.js')
 //
+global.__test   = __dirname
 global.__server = __dirname + '/../server'
 global.__client = __dirname + '/../client'
 
