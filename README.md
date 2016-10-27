@@ -12,7 +12,7 @@
 ## Usage
 
 ```bash
-$ npm install -g pult
+$ npm install -g pult-cli
 $ pult new my-project
 $ cd my-project
 $ pult add react
