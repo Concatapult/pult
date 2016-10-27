@@ -13,6 +13,8 @@ global.__client = __dirname + '/../client'
 // Assertions
 //
 var chai = require('chai')
+chai.use( require('chai-subset') )
+
 // Option 1: Make the `expect` function available in every test file
 global.expect = chai.expect
 // Option 2: Make everything should-able

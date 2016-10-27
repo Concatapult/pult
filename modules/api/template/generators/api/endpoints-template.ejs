@@ -1,0 +1,60 @@
+var API = require('../lib/api-helpers')
+// var <%= modelName %> = require('../models/<%= modelName %>')
+
+
+var <%= namePluralCapitalized %>API = module.exports = require('express').Router()
+<% if ( endpoints[0] ) { -%>
+
+
+<%= namePluralCapitalized %>API.get('/<%= namePlural %>', function(req, res) {
+
+  <%= modelName %>.all( req.query )
+    .then( API.prep(200, res) )
+    .catch( <%= modelName %>.NotFound, API.prep(404, res) )
+    .catch( API.catchUnexpectedErrors )
+})
+<% } -%>
+<% if ( endpoints[1] ) { -%>
+
+
+<%= namePluralCapitalized %>API.post('/<%= namePlural %>', function(req, res) {
+
+  <%= modelName %>.create( req.body )
+    .then( API.prep(201, res) )
+    .catch( <%= modelName %>.InvalidFormat, API.prep(400, res) )
+    .catch( API.catchUnexpectedErrors)
+})
+<% } -%>
+<% if ( endpoints[2] ) { -%>
+
+
+<%= namePluralCapitalized %>API.get('/<%= namePlural %>/:id', function (req, res) {
+
+  <%= modelName %>.find( req.params.id )
+    .then( API.prep(200, res) )
+    .catch( <%= modelName %>.NotFound, API.prep(404, res) )
+    .catch( API.catchUnexpectedErrors )
+})
+<% } -%>
+<% if ( endpoints[3] ) { -%>
+
+
+<%= namePluralCapitalized %>API.put('/<%= namePlural %>/:id', function(req, res) {
+
+  <%= modelName %>.updateOne( req.query )
+    .then( API.prep(200, res) )
+    .catch( <%= modelName %>.NotFound, API.prep(404, res) )
+    .catch( API.catchUnexpectedErrors )
+})
+<% } -%>
+<% if ( endpoints[4] ) { -%>
+
+
+<%= namePluralCapitalized %>API.delete('/<%= namePlural %>/:id', function(req, res) {
+
+  <%= modelName %>.delete( req.query )
+    .then( API.prep(200, res) )
+    .catch( <%= modelName %>.NotFound, API.prep(404, res) )
+    .catch( API.catchUnexpectedErrors )
+})
+<% } -%>

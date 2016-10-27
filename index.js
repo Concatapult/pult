@@ -3,6 +3,7 @@ var co = require('co')
 var prompt = require('co-prompt')
 var Promise = require('bluebird')
 
+var errors = require('./lib/errors')
 var exec = require('./lib/exec')
 
 var Path = require('path')
@@ -98,8 +99,45 @@ program
       console.log("\nYour new project is ready! `cd` into it to get started:\n")
       console.log(`    $ cd ${projectName}`)
       console.log(`    $ yarn`)
-      console.log(`    $ npm start\n`)
-      console.log(`    $ pult add knex pg # optional; see docs for more modules\n`)
+      console.log(`    $ npm start`)
+      console.log(`    $ pult add knex pg  # optional; see docs for more modules\n`)
+    })
+      .then(exit(0), exit(1))
+  })
+
+//
+// Generators
+//
+program
+  .command('generate <generatorName> [generatorArgs...]')
+  .alias('g')
+  .action(function (generatorName, generatorArgs) {
+
+    var config = {
+      projectRoot: process.cwd(),
+    }
+
+    co(function * () {
+
+      var result = yield require(`./commands/run-generator`)(vfs, config, generatorName, generatorArgs)
+
+      console.log(`\nGenerating this ${generatorName} will result in the following changes:\n`)
+      var base = null
+      store.each(function (file) {
+        if ( ! file.state ) return;
+        base = base || util.getCommonPath(config.projectRoot, file.history[0])
+        console.log(`  ${ file.isNew ? '+' : 'M' } ${ file.history[0].replace(base, '.') }`)
+      })
+
+      var response = yield prompt('\nIs this ok? (Y/n) ')
+
+      if ( response && response.toLowerCase() !== 'y' ) {
+        console.log("Cancelled.")
+        return process.exit(0)
+      }
+
+      yield call(vfs, 'commit')
+      console.log(`Generated ${generatorName}! :)`)
     })
       .then(exit(0), exit(1))
   })
@@ -111,7 +149,12 @@ program
 var call = (obj, method, ...args) => Promise.promisify(obj[method]).apply(obj, args)
 
 var exit = (code) => (x) => {
-  if ( x instanceof Error ) console.error(x)
+  if ( x instanceof errors.PultError ) {
+    console.error("\nError:", x.message)
+  }
+  else if ( x instanceof Error ) {
+    console.error(x)
+  }
   process.exit(code)
 }
 

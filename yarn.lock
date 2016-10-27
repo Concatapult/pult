@@ -73,16 +73,6 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
 
-concatapult/semver-set, semver-set@^0.1.1:
-  name semver-set
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/semver-set/-/semver-set-0.1.1.tgz#e52b23d3e2c0e36b746d209cc3e3451ab301f7bc"
-  dependencies:
-    cartesian-product "^2.1.2"
-    invariant "^2.1.0"
-    lodash "^3.9.3"
-    semver "^4.3.6"
-
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -144,6 +134,10 @@ graceful-fs@^4.1.2:
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
+
+inflection:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/inflection/-/inflection-1.10.0.tgz#5bffcb1197ad3e81050f8e17e21668087ee9eb2f"
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -316,6 +310,15 @@ rimraf@^2.2.8:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
   dependencies:
     glob "^7.0.5"
+
+semver-set@^0.1.1, semver-set@concatapult/semver-set:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/semver-set/-/semver-set-0.1.1.tgz#e52b23d3e2c0e36b746d209cc3e3451ab301f7bc"
+  dependencies:
+    cartesian-product "^2.1.2"
+    invariant "^2.1.0"
+    lodash "^3.9.3"
+    semver "^4.3.6"
 
 semver@^4.3.6:
   version "4.3.6"

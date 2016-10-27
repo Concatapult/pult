@@ -23,7 +23,7 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
       devDependencies: mergeDeps( baseConfig.package.devDependencies, moduleConfig.devDependencies ),
     })
 
-    vfs.write( baseConfig.projectRoot + '/package.json', JSON.stringify(newPackage, null, '  ') )
+    vfs.write( baseConfig.projectRoot + '/package.json', JSON.stringify(newPackage, null, '  ') + '\n' )
   }
 
   var totalConfig = Object.assign({}, baseConfig, moduleConfig)
