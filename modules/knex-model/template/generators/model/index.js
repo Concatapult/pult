@@ -24,4 +24,10 @@ module.exports = function * generateModel (util, vfs, config, name) {
     util.projectFile(`server/models/${ name }.js`),
     templateVars
   )
+
+  vfs.copyTpl(
+    util.projectFile(`generators/model/model-test-template.ejs`),
+    util.projectFile(`test/server/models/${ name }-test.js`),
+    templateVars
+  )
 }
