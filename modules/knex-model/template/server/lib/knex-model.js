@@ -1,8 +1,15 @@
 var db = require('./knex-driver')
 var Promise = require('bluebird')
 
-exports.create = function (modelName, { tableName, idColumn: 'id' }) {
+exports.create = function (modelName, options={}) {
   var Model, methods;
+
+  var tableName = options.tableName || null
+  var idColumn  = options.idColumn  || 'id'
+
+  if ( ! tableName ) {
+    throw new Error('[knex-model.js] You must specify a tableName')
+  }
   //
   // Initialize with methods common across all models
   //
@@ -55,8 +62,15 @@ exports.create = function (modelName, { tableName, idColumn: 'id' }) {
     }
   }
 
+  //
+  // Construct an object with methods as its prototype to make overriding easier
+  //
+  Model = Object.create(methods)
+  Model.methods = methods
 
+  //
   // Custom Errors (useful for handling via Promise#catch)
+  //
   Model.NotFound = class NotFound extends Error {
     constructor() {
       super(`${modelName}: not found.`)
@@ -73,8 +87,5 @@ exports.create = function (modelName, { tableName, idColumn: 'id' }) {
     }
   }
 
-  // Return an object with methods as its prototype to make overriding easier
-  Model = Object.create(methods)
-  Model.methods = methods
   return Model
 }

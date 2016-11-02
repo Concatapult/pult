@@ -67,5 +67,16 @@ The code structure that Concatapult generates is opinionated without apology. Wi
 
 [Knex.js](http://knexjs.org/) is a solid library for constructing SQL queries for [many different SQL databases](https://github.com/tgriesser/knex/tree/master/src/dialects).
 
-LAST TIME: DOCUMENT
+### pult add knex-model
 
+Generators added:
+
+    pult generate model [model-name]
+
+### pult add api
+
+Generators added:
+
+    pult generate api [resource-name]
+
+TODO: DOCUMENT MORE
