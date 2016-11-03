@@ -5,6 +5,7 @@ var Promise = require('bluebird')
 
 var errors = require('./lib/errors')
 var exec = require('./lib/exec')
+var colors = require('./lib/colors')
 
 var Path = require('path')
 var program = require('commander')
@@ -41,12 +42,16 @@ program
 
       var result = require('./commands/add-module.js')(vfs, config, module, moduleArgs)
 
-      console.log(`\nAdding the ${module} module will result in the following changes:\n`)
+      console.log(`\nAdding the ${ colors.subject(module) } module will result in the following changes:\n`)
       var base = null
       store.each(function (file) {
         if ( ! file.state ) return;
         base = base || util.getCommonPath(config.projectRoot, file.history[0])
-        console.log(`  ${ file.isNew ? '+' : 'M' } ${ file.history[0].replace(base, '.') }`)
+
+        var shortFilePath = file.history[0].replace(base, '.')
+        file.isNew
+          ? console.log(colors.fileAdd(`  + ${ shortFilePath }`))
+          : console.log(colors.fileMod(`  M ${ shortFilePath }`))
       })
 
       if ( result.installs ) {
@@ -150,7 +155,7 @@ var call = (obj, method, ...args) => Promise.promisify(obj[method]).apply(obj, a
 
 var exit = (code) => (x) => {
   if ( x instanceof errors.PultError ) {
-    console.error("\nError:", x.message, '\n')
+    console.error(colors.error("\nError:"), x.message, '\n')
   }
   else if ( x instanceof Error ) {
     console.error(x)

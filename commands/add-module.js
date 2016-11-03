@@ -3,6 +3,9 @@ var Path = require('path')
 var semver = require('semver')
 var semverIntersect = require('semver-set').intersect
 
+var colors = require('../lib/colors')
+var errors = require('../lib/errors')
+
 
 module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
 
@@ -11,7 +14,7 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
   var addedModules = baseConfig.package.addedPultModules
 
   if ( addedModules.includes(moduleName) ) {
-    throw new Error(`pult: Module '${moduleName}' is already a part of this project.`)
+    throw new errors.ModuleError(`Module ${colors.subject(moduleName)} is already a part of this project.`)
   }
 
   try {
