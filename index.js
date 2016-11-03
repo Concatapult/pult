@@ -29,32 +29,32 @@ var util = require('mem-fs-editor/lib/util')
 program
   .command('add <module> [moduleArgs...]')
   .action(function (module, moduleArgs) {
-
-    // TODO: Error handling
-    var package = require( Path.resolve(process.cwd(), 'package.json'))
-
-    var config = {
-      package: package,
-      projectRoot: process.cwd(),
-    }
-
-    var result = require('./commands/add-module.js')(vfs, config, module, moduleArgs)
-
-    console.log(`\nAdding the ${module} module will result in the following changes:\n`)
-    var base = null
-    store.each(function (file) {
-      if ( ! file.state ) return;
-      base = base || util.getCommonPath(config.projectRoot, file.history[0])
-      console.log(`  ${ file.isNew ? '+' : 'M' } ${ file.history[0].replace(base, '.') }`)
-    })
-
-    if ( result.installs ) {
-      console.log('\nand install the following packages:\n')
-      console.log(`    ${ result.installs.join(', ') }`)
-    }
-
-
+    // Wrap everything in co to easily catch errors
     co(function * () {
+
+      var package = require( Path.resolve(process.cwd(), 'package.json'))
+
+      var config = {
+        package: package,
+        projectRoot: process.cwd(),
+      }
+
+      var result = require('./commands/add-module.js')(vfs, config, module, moduleArgs)
+
+      console.log(`\nAdding the ${module} module will result in the following changes:\n`)
+      var base = null
+      store.each(function (file) {
+        if ( ! file.state ) return;
+        base = base || util.getCommonPath(config.projectRoot, file.history[0])
+        console.log(`  ${ file.isNew ? '+' : 'M' } ${ file.history[0].replace(base, '.') }`)
+      })
+
+      if ( result.installs ) {
+        console.log('\nand install the following packages:\n')
+        console.log(`    ${ result.installs.join(', ') }`)
+      }
+
+
       var response = yield prompt('\nIs this ok? (Y/n) ')
 
       if ( response && response.toLowerCase() !== 'y' ) {
@@ -150,7 +150,7 @@ var call = (obj, method, ...args) => Promise.promisify(obj[method]).apply(obj, a
 
 var exit = (code) => (x) => {
   if ( x instanceof errors.PultError ) {
-    console.error("\nError:", x.message)
+    console.error("\nError:", x.message, '\n')
   }
   else if ( x instanceof Error ) {
     console.error(x)

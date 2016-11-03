@@ -1,14 +1,15 @@
+var Errors = require('../../lib/errors')
 
 
 module.exports = function configKnex (vfs, baseConfig, moduleArgs) {
   if ( moduleArgs.length >= 2 ) {
-    throw new Error('Module `knex` only takes 1 argument')
+    throw new Errors.ModuleError('Module `knex` only takes 1 argument')
   }
 
   var dialect = dialectMap[ moduleArgs[0] ]
   if ( ! dialect ) {
     let options = Object.keys(driverMap).sort()
-    throw new Error('Module `knex` needs a dialect. Options are:\n  ' + options.join(', '))
+    throw new Errors.ModuleError('Module `knex` needs a dialect. Options are:\n\n    ' + options.join(', '))
   }
 
   var config = {
