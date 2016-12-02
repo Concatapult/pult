@@ -98,13 +98,13 @@ program
       process.chdir('./' + projectName)
 
       // Initialize some things
+      yield exec(`yarn`)
       yield exec(`git`, ['init'])
       yield exec(`git`, ['add', '.'])
       yield exec(`git`, ['commit', '-m', `"First commit"`])
 
       console.log("\nYour new project is ready! `cd` into it to get started:\n")
       console.log(`    $ cd ${projectName}`)
-      console.log(`    $ yarn`)
       console.log(`    $ yarn start`)
       console.log(`    $ pult add knex pg  # optional; see docs for more modules\n`)
     })
