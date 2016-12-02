@@ -30,6 +30,7 @@ var util = require('mem-fs-editor/lib/util')
 program
   .command('add <module> [moduleArgs...]')
   .action(function (module, moduleArgs) {
+    module = module.toLowerCase()
     // Wrap everything in co to easily catch errors
     co(function * () {
 
@@ -117,6 +118,7 @@ program
   .command('generate <generatorName> [generatorArgs...]')
   .alias('g')
   .action(function (generatorName, generatorArgs) {
+    generatorName = generatorName.toLowerCase()
 
     var config = {
       projectRoot: process.cwd(),
