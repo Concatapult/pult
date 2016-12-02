@@ -1,4 +1,5 @@
 require(TEST_HELPER)
+// var db = require(__server + '/lib/knex-driver')
 var request = require('supertest-as-promised')
 var <%%= namePluralCapitalized %>API = require(__server + '/apis/<%%= namePlural %>-api.js')
 
@@ -30,10 +31,10 @@ describe('<%%= namePluralCapitalized %> API', function() {
 
   it_('creates and retrieves a <%%= name %> by collection', function * () {
     var new<%%= nameCapitalized %>Attrs = { /* TODO: FILL IN */ }
-    var created<%%= nameCapitalized %>
+    var created<%%= nameCapitalized %> = null
 
     yield request(app)
-      .post('/pasties')
+      .post('/<%%= namePlural %>')
       .send(new<%%= nameCapitalized %>Attrs)
       .expect(201)
       .expect(function(response) {
@@ -44,7 +45,7 @@ describe('<%%= namePluralCapitalized %> API', function() {
       })
 
     yield request(app)
-      .get(`/pasties`)
+      .get('/<%%= namePlural %>')
       .expect(200)
       .expect(function (response) {
         expect( response.body ).to.deep.equal( created<%%= nameCapitalized %> )
@@ -56,10 +57,10 @@ describe('<%%= namePluralCapitalized %> API', function() {
 
   it_('creates and retrieves a <%%= name %> by id', function * () {
     var new<%%= nameCapitalized %>Attrs = { /* TODO: FILL IN */ }
-    var created<%%= nameCapitalized %>
+    var created<%%= nameCapitalized %> = null
 
     yield request(app)
-      .post('/pasties')
+      .post('/<%%= namePlural %>')
       .send(new<%%= nameCapitalized %>Attrs)
       .expect(201)
       .expect(function(response) {
@@ -70,7 +71,7 @@ describe('<%%= namePluralCapitalized %> API', function() {
       })
 
     yield request(app)
-      .get(`/pasties/${ created<%%= nameCapitalized %>.id }`)
+      .get(`/<%%= namePlural %>/${ created<%%= nameCapitalized %>.id }`)
       .expect(200)
       .expect(function (response) {
         expect( response.body ).to.deep.equal( created<%%= nameCapitalized %> )
@@ -82,10 +83,10 @@ describe('<%%= namePluralCapitalized %> API', function() {
 
   it_('creates and updates a <%%= name %>', function * () {
     var new<%%= nameCapitalized %>Attrs = { /* TODO: FILL IN */ }
-    var created<%%= nameCapitalized %>
+    var created<%%= nameCapitalized %> = null
 
     yield request(app)
-      .post('/pasties')
+      .post('/<%%= namePlural %>')
       .send(new<%%= nameCapitalized %>Attrs)
       .expect(201)
       .expect(function(response) {
@@ -101,7 +102,7 @@ describe('<%%= namePluralCapitalized %> API', function() {
     delete updateAttrs.id
 
     yield request(app)
-      .put(`/pasties/${ created<%%= nameCapitalized %>.id }`)
+      .put(`/<%%= namePlural %>/${ created<%%= nameCapitalized %>.id }`)
       .send(updateAttrs)
       .expect(200)
       .expect(function (response) {

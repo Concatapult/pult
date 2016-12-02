@@ -21,7 +21,7 @@ var <%%= namePluralCapitalized %>API = module.exports = require('express').Route
 
   <%%= modelName %>.create( req.body )
     .then( API.prep(201, res) )
-    .catch( <%%= modelName %>.InvalidFormat, API.prep(400, res) )
+    .catch( <%%= modelName %>.InvalidArgument, API.prep(400, res) )
     .catch( API.catchUnexpectedErrors)
 })
 <%% } -%>
@@ -54,7 +54,6 @@ var <%%= namePluralCapitalized %>API = module.exports = require('express').Route
 
   <%%= modelName %>.delete( req.query )
     .then( API.prep(200, res) )
-    .catch( <%%= modelName %>.NotFound, API.prep(404, res) )
     .catch( API.catchUnexpectedErrors )
 })
 <%% } -%>

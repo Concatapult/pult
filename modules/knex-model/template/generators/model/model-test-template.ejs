@@ -14,7 +14,7 @@ describe('<%%= nameCapitalized %> Model', function() {
     var created<%%= nameCapitalized %> = yield <%%= nameCapitalized %>.create(attrs)
 
     expect( created<%%= nameCapitalized %> ).to.be.a('number')
-    expect( created<%%= nameCapitalized %> ).to.contain.subset(attrs)
+    expect( created<%%= nameCapitalized %> ).to.containSubset(attrs)
 
     var fetched = yield <%%= nameCapitalized %>.find( created<%%= nameCapitalized %>.id )
     expect( fetched ).to.deep.equal( created<%%= nameCapitalized %> )

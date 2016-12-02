@@ -75,7 +75,7 @@ module.exports = function * generateApi (util, vfs, config, name, endpointString
   if ( i || i === 0 ) {
     var startPosition = indexFile.lastIndexOf('\n', i) + 1
     var output = indexFile.substr(0, startPosition)
-      + `router.use('/', require('./apis/${ namePlural }-api'))\n`
+      + `router.use('/', require('./${ namePlural }-api'))\n`
       + indexFile.substr(startPosition)
 
     vfs.write(indexFilePath, output)
