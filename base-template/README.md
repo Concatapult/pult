@@ -5,8 +5,8 @@ A new project in the making.
 ## Getting Started
 
 ```
-$ npm install
-$ npm start
+$ yarn
+$ yarn start
 ```
 
 Now visit [localhost:4000](http://localhost:4000/)

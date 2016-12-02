@@ -6,7 +6,7 @@
 
 - `git`
 - `node >= v6.2.0`
-- `yarn ^0.15.1` – install / update with `npm install -g yarn`
+- `yarn >= 0.16.1` – install / update with `npm install -g yarn`
 
 
 ## Usage

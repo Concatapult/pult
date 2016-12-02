@@ -104,7 +104,7 @@ program
       console.log("\nYour new project is ready! `cd` into it to get started:\n")
       console.log(`    $ cd ${projectName}`)
       console.log(`    $ yarn`)
-      console.log(`    $ npm start`)
+      console.log(`    $ yarn start`)
       console.log(`    $ pult add knex pg  # optional; see docs for more modules\n`)
     })
       .then(exit(0), exit(1))
