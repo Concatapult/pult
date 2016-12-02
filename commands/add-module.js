@@ -60,7 +60,9 @@ function mergeDeps (dst, src) {
     // We need to check if both are indeed semver ranges in order to do
     // intersects – some may be git urls or other such things.
     var isSem = semver.validRange(version) && semver.validRange(dst[dep]);
-    return isSem ? semverIntersect(version, dst[dep]) || version : version;
+
+    return version === dst[dep] && version
+      || (isSem ? semverIntersect(version, dst[dep]) || version : version);
   }));
 }
 
