@@ -69,6 +69,7 @@ The code structure that Concatapult generates is opinionated without apology. Wi
 - [knex](#pult-add-knex)
   - [knex-model](#pult-add-knex-model)
 - [spa](#pult-add-spa)
+  - [react](#pult-add-react)
 
 ### pult add knex
 
@@ -87,3 +88,11 @@ Generators added:
     pult generate api [resource-name]
 
 TODO: DOCUMENT MORE
+
+### pult add spa
+
+This module installs [browserify](http://browserify.org/) and [browserify-middleware](https://github.com/ForbesLindesay/browserify-middleware) to lay the foundation for adding other modules for Single Page Applications.
+
+### pult add react
+
+[React.js](https://facebook.github.io/react/) is a popular framework for building SPAs. Concatapult does not necessarily endorse React for all, or even most cases; many times, using React can be overkill.
