@@ -19,9 +19,6 @@ module.exports = function configClient (vfs, baseConfig, moduleArgs) {
 
   browserify.external.push('react', 'react-dom')
 
-  serverConfig.routerPipeline.unshift('./config/client-bundles.js')
-  serverConfig.routerPipeline.push('./config/catch-all-index-page.js')
-
   var config = {
     dependencies: {
       "react": "*",
