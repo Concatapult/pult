@@ -71,27 +71,38 @@ The code structure that Concatapult generates is opinionated without apology. Wi
 - [spa](#pult-add-spa)
   - [react](#pult-add-react)
 
-### pult add knex
+TODO: DOCUMENT MORE
 
-[Knex.js](http://knexjs.org/) is a solid library for constructing SQL queries for [many different SQL databases](https://github.com/tgriesser/knex/tree/master/src/dialects).
-
-### pult add knex-model
-
-Generators added:
-
-    pult generate model [model-name]
 
 ### pult add api
+
+This module adds a basic structure and generator for RESTful API endpoints.
 
 Generators added:
 
     pult generate api [resource-name]
 
-TODO: DOCUMENT MORE
+
+### pult add knex
+
+[Knex.js](http://knexjs.org/) is a solid library for constructing SQL queries for [many different SQL databases](https://github.com/tgriesser/knex/tree/master/src/dialects).
+
+This module adds a driver file that you can require in your models to connect to the database.
+
+
+### pult add knex-model
+
+Instead of a complicated ORM that requires thousands of lines of code, this module gives you a small model "class" that you can extend as you need to. The starting model provides basic functionality, such as `MyModel.save` and `MyModel.findBy`. It also provides a model generator to help you get started quicker.
+
+Generators added:
+
+    pult generate model [model-name]
+
 
 ### pult add spa
 
 This module installs [browserify](http://browserify.org/) and [browserify-middleware](https://github.com/ForbesLindesay/browserify-middleware) to lay the foundation for adding other modules for Single Page Applications.
+
 
 ### pult add react
 
