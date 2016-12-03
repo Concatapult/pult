@@ -63,6 +63,13 @@ The code structure that Concatapult generates is opinionated without apology. Wi
 
 `pult` supports adding several modules to your base project. For any of the following modules, you can run `pult add X`, where `X` is the name of the module.
 
+### Module Dependency Tree Overview
+
+- [api](#pult-add-api)
+- [knex](#pult-add-knex)
+  - [knex-model](#pult-add-knex-model)
+- [spa](#pult-add-spa)
+
 ### pult add knex
 
 [Knex.js](http://knexjs.org/) is a solid library for constructing SQL queries for [many different SQL databases](https://github.com/tgriesser/knex/tree/master/src/dialects).

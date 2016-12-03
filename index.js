@@ -34,11 +34,10 @@ program
     // Wrap everything in co to easily catch errors
     co(function * () {
 
-      var package = require( Path.resolve(process.cwd(), 'package.json'))
-
       var config = {
-        package: package,
+        package: require( Path.resolve(process.cwd(), 'package.json')),
         projectRoot: process.cwd(),
+        server: require( Path.resolve(process.cwd(), 'server/config/index.json')),
       }
 
       var result = require('./commands/add-module.js')(vfs, config, module, moduleArgs)

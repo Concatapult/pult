@@ -39,7 +39,11 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
     })
   }
 
-  vfs.write( baseConfig.projectRoot + '/package.json', JSON.stringify(newPackage, null, '  ') + '\n' )
+  if ( moduleConfig.server ) {
+    writeJSON(vfs, baseConfig.projectRoot + '/server/config/index.json', moduleConfig.server)
+  }
+
+  writeJSON(vfs, baseConfig.projectRoot + '/package.json', newPackage)
 
   var totalConfig = Object.assign({}, baseConfig, moduleConfig)
   vfs.copyTpl( $(`modules/${moduleName}/template/{**,.*}`), baseConfig.projectRoot, totalConfig )
@@ -72,4 +76,8 @@ function mapValues (obj, fn) {
     result[prop] = fn(obj[prop], prop)
   }
   return result
+}
+
+function writeJSON(vfs, path, value) {
+  vfs.write( path, JSON.stringify(value, null, '  ') + '\n' )
 }

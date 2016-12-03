@@ -1,44 +1,36 @@
-var browserify = require('browserify-middleware')
 var express = require('express')
-var Path = require('path')
-
-var routes = express.Router()
-
-//
-// Provide a browserified file at a specified path
-//
-var vendorLibs = []
-
-routes.get('/vendor-bundle.js', browserify(vendorLibs))
-
-routes.get('/app-bundle.js', browserify('./client/index.js', {
-  external: vendorLibs
-}))
+var router = express.Router()
 
 //
 // Example endpoint (also tested in test/server/index_test.js)
 //
-routes.get('/api/tags-example', function(req, res) {
+router.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'browserify', 'mithril'])
 })
 
-//
-// Static assets (html, etc.)
-//
-var assetFolder = Path.resolve(__dirname, '../client/public')
-routes.use(express.static(assetFolder))
 
+global.CONFIG = require('./config/index.json')
+
+for (var item of CONFIG.routerPipeline) {
+  require(item).mount(router)
+}
+
+router.get('/', function (req, res) {
+  res.send(`
+    <h1>Welcome to Concatapult!</h1>
+    <p>
+      If you're seeing this, it's because you have not yet added a client.
+      If you're looking to build a <b>Singe Page App</b>, start by running
+      <code>pult add spa</code>
+      in your terminal.
+    </p>
+    <p>For more information, visit
+      <a href="https://github.com/Concatapult/pult" target="_blank">the docs</a>.</p>
+    <p>Happy pulting!</p>
+  `)
+})
 
 if (process.env.NODE_ENV !== 'test') {
-  //
-  // The Catch-all Route
-  // This is for supporting browser history pushstate.
-  // NOTE: Make sure this route is always LAST.
-  //
-  routes.get('/*', function(req, res){
-    res.sendFile( assetFolder + '/index.html' )
-  })
-
   //
   // We're in development or production mode;
   // create and run a real server.
@@ -49,7 +41,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.use( require('body-parser').json() )
 
   // Mount our main router
-  app.use('/', routes)
+  app.use('/', router)
 
   // Start the server!
   var port = process.env.PORT || 4000
@@ -58,5 +50,5 @@ if (process.env.NODE_ENV !== 'test') {
 }
 else {
   // We're in test mode; make this file importable instead.
-  module.exports = routes
+  module.exports = router
 }
