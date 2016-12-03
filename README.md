@@ -69,6 +69,7 @@ The code structure that Concatapult generates is opinionated without apology. Wi
 - [knex](#pult-add-knex)
   - [knex-model](#pult-add-knex-model)
 - [spa](#pult-add-spa)
+  - [mithril](#pult-add-mithril)
   - [react](#pult-add-react)
 
 TODO: DOCUMENT MORE
@@ -102,6 +103,11 @@ Generators added:
 ### pult add spa
 
 This module installs [browserify](http://browserify.org/) and [browserify-middleware](https://github.com/ForbesLindesay/browserify-middleware) to lay the foundation for adding other modules for Single Page Applications.
+
+
+### pult add mithril
+
+[Mithril.js](http://mithril.js.org/) is an excellent SPA framework that finds the right balance between size (7.8kb), functionality (router, ajax, Virtual DOM), flexibility, and speed. It requires no compiling / transpiling to work, and can be made to be browser-compatible all the way back to Internet Explorer 6.
 
 
 ### pult add react
