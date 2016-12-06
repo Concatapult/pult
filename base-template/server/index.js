@@ -2,6 +2,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 var express = require('express')
 var router = express.Router()
+var Path = require('path')
 
 //
 // Example endpoint (also tested in test/server/index_test.js)
@@ -12,6 +13,7 @@ router.get('/api/tags-example', function(req, res) {
 
 
 global.CONFIG = require('./config/index.json')
+CONFIG.projectFile = (path) => Path.resolve(__dirname, '..', path)
 
 for (var item of CONFIG.routerPipeline) {
   require(item).mount(router)
