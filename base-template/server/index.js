@@ -4,20 +4,14 @@ var express = require('express')
 var router = express.Router()
 var Path = require('path')
 
+require('./config')(router)
+
 //
 // Example endpoint (also tested in test/server/index_test.js)
 //
 router.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'browserify', 'mithril'])
 })
-
-
-global.CONFIG = require('./config/index.json')
-CONFIG.projectFile = (path) => Path.resolve(__dirname, '..', path)
-
-for (var item of CONFIG.routerPipeline) {
-  require(item).mount(router)
-}
 
 router.get('/', function (req, res) {
   res.send(`
