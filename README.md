@@ -15,6 +15,7 @@
 $ npm install -g pult-cli
 $ pult new my-project
 $ cd my-project
+
 $ pult add react
 $ pult add ... # See "Modules" section
 ```

@@ -101,6 +101,7 @@ program
       yield exec(`git`, ['init'])
       yield exec(`git`, ['add', '.'])
       yield exec(`git`, ['commit', '-m', `"First commit"`])
+      yield exec(`yarn`, ['setup'])
 
       console.log("\nYour new project is ready! `cd` into it to get started:\n")
       console.log(`    $ cd ${projectName}`)
