@@ -17,8 +17,8 @@ Now visit [localhost:4000](http://localhost:4000/)
 There is a basic test framework in your `test/` folder. Here's how to use it:
 
 ```bash
-$ npm test                 # runs all tests
-$ npm test server/index.js # runs tests in a single file
+$ yarn test                 # runs all tests
+$ yarn test server/index.js # runs tests in a single file
 ```
 
 ## Made with Concatapult
