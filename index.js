@@ -11,7 +11,7 @@ var Path = require('path')
 var program = require('commander')
 
 program
-  .version('0.2.2')
+  .version('0.3.0')
 
 //
 // The in-memory file system
