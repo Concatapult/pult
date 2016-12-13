@@ -1,4 +1,4 @@
-# pult
+![Concatapult](https://raw.githubusercontent.com/concatapult/pult/master/concatapult.png)
 
 `pult` is Concatapult's command-line interface to help you generate solid project boilerplates that are composed of the pieces you choose.
 
