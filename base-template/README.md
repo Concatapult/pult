@@ -6,6 +6,7 @@ A new project in the making.
 
 ```
 $ yarn
+$ yarn setup
 $ yarn start
 ```
 
