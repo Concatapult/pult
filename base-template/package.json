@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "setup": "node server/config/setup",
-    "start": "nodemon server/ --ignore client/",
+    "start": "nodemon --config server/config/nodemon.json",
     "test": "./test/run.sh"
   },
   "author": "Concatapult <change-me@example.com>",
