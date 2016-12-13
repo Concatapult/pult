@@ -1,4 +1,4 @@
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+require('dotenv').config()
 
 var express = require('express')
 var router = express.Router()

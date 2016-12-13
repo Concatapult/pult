@@ -4,6 +4,7 @@
   "description": "The next big thing, created with Concatapult.",
   "main": "server/index.js",
   "scripts": {
+    "setup": "node server/config/setup",
     "start": "nodemon server/ --ignore client/",
     "test": "./test/run.sh"
   },
@@ -12,6 +13,7 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
     "express": "^4.14.0"
   },
   "devDependencies": {
