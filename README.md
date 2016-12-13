@@ -69,7 +69,6 @@ The code structure that Concatapult generates is opinionated without apology. Wi
 - [knex](#pult-add-knex)
   - [knex-model](#pult-add-knex-model)
 - [less](#pult-add-less)
-  - [style](#pult-add-style)
 - [spa](#pult-add-spa)
   - [mithril](#pult-add-mithril)
   - [react](#pult-add-react)
@@ -105,11 +104,6 @@ Generators added:
 ### pult add less
 
 [LESS CSS](http://lesscss.org/) is a SASS alternative that is 100% written in JavaScript. Because of this, the tooling is simpler, faster to install, and faster to deploy.
-
-
-### pult add style
-
-Adds a minimal folder structure with some basic styles for your project to start with.
 
 
 ### pult add spa
