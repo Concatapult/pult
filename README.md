@@ -60,6 +60,18 @@ The code structure that Concatapult generates is opinionated without apology. Wi
 - [Don't over-engineer](https://medium.com/@rdsubhas/10-modern-software-engineering-mistakes-bc67fbef4fc8)
 - [Write code that is easy to delete](http://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)
 
+## Base Project
+
+When you run `pult new`, you get the following base project:
+
+- **express.js** - A basic server in `server/index.js` with a placeholder endpoint.
+- **chai & mocha** - A foundation for testing with `supertest` and [Promise coroutines](https://github.com/airportyh/coroutines-in-node/blob/master/bluebird.js).
+- **dotenv** - Frictionless support for environment variables that don't get commited to git.
+- **server/config/index.js** - A router mounting pipeline that makes it easy for modules to set themselves up.
+- **server/config/setup/index.js** - A series of setup files. Ideally, running `yarn setup` is all that a developer needs to do to before running your app locally.
+
+I encourage you to read through each file. There is not much going on, and once learned you will be able to own your code in a way that no framework would permit.
+
 ## Modules
 
 `pult` supports adding several modules to your base project. For any of the following modules, you can run `pult add X`, where `X` is the name of the module.
