@@ -14,8 +14,8 @@ module.exports = function configClient (vfs, baseConfig, moduleArgs) {
     }
   }
 
-  serverConfig.routerPipeline.unshift('./config/client-bundles.js')
-  serverConfig.routerPipeline.push('./config/catch-all-index-page.js')
+  serverConfig.routerPipeline.unshift('./client-bundles.js')
+  serverConfig.routerPipeline.push('./catch-all-index-page.js')
 
   var config = {
     dependencies: {

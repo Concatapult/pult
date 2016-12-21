@@ -8,7 +8,7 @@ module.exports = function configClient (vfs, baseConfig, moduleArgs) {
 
   var serverConfig = lib.clone(baseConfig.server)
 
-  serverConfig.routerPipeline.unshift('./config/style-bundles.js')
+  serverConfig.routerPipeline.unshift('./style-bundles.js')
 
   //
   // Inject link tag into main html file
