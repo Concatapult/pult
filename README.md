@@ -80,6 +80,7 @@ I encourage you to read through each file. There is not much going on, and once 
 ### Module Dependency Tree Overview
 
 - [api](#pult-add-api)
+- [cookie-session](#pult-add-cookie-session)
 - [knex](#pult-add-knex)
   - [knex-model](#pult-add-knex-model)
 - [less](#pult-add-less)
@@ -133,3 +134,15 @@ This module installs [browserify](http://browserify.org/) and [browserify-middle
 ### pult add react
 
 [React.js](https://facebook.github.io/react/) is a popular framework for building SPAs. Concatapult does not necessarily endorse React for all, or even most cases; many times, using React can be overkill.
+
+
+### pult add cookie-session
+
+Using [cookie sessions](https://github.com/expressjs/cookie-session) is a quick and easy solution for your app's sessions. The session is **encrypted** and stored entirely in a cookie in each user's browser, subtracting the need to set up a sessions database.
+
+
+## Built-in Generators
+
+Sometimes you need to generate your own quick configuration for your own project. In that case you can use:
+
+    pult g config
