@@ -4,8 +4,15 @@ var Path = require('path')
 
 
 module.exports = co.wrap(function * runGenerator (vfs, baseConfig, name, args=[]) {
+  var generator;
+
   try {
-    var generator = require(`${baseConfig.projectRoot}/generators/${name}`)
+    generator = require(`../built-in-generators/${name}`)
+  }
+  catch (e) {}
+
+  try {
+    generator = generator || require(`${baseConfig.projectRoot}/generators/${name}`)
   }
   catch (err) {
     if ( err.message.match(/Cannot find module/) ) {
