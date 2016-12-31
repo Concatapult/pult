@@ -1,5 +1,7 @@
 ![Concatapult](https://raw.githubusercontent.com/concatapult/pult/master/concatapult.png)
 
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/concatapult/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 `pult` is Concatapult's command-line interface to help you generate solid project boilerplates that are composed of the pieces you choose.
 
 ### Requirements
