@@ -46,7 +46,7 @@ The generated code should be a simple as possible. Complexity should be app-spec
 
 ### Leading (but not Bleeding) Edge
 
-Because pult is inteded to be a rapid starter for greenfield projects, it should always be updated with the lastest proven practices.
+Because pult is intended to be a rapid starter for greenfield projects, it should always be updated with the lastest proven practices.
 
 Note that this **does not** mean we are eager to use the latest tech fads. It means we will take a step back, observe, and import the progressive ideas that the JavaScript community has learned and proven to be beneficial.
 
