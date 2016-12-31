@@ -44,11 +44,11 @@ Concatapult chooses to use and compose small modules with as few dependencies as
 
 The generated code should be a simple as possible. Complexity should be app-specific requirements, not a requirement of the generated project.
 
-### No Server File Transpiling
+### Leading (but not Bleeding) Edge
 
-You should not need to transpile ES6 just to rune node.js code.
+Because pult is inteded to be a rapid starter for greenfield projects, it should always be updated with the lastest proven practices.
 
-To be clear, transpiling client code is good and encouraged.
+Note that this **does not** mean we are eager to use the latest tech fads. It means we will take a step back, observe, and import the progressive ideas that the JavaScript community has learned and proven to be beneficial.
 
 ### Portable
 
@@ -128,7 +128,7 @@ Generators added:
 
 ** WARNING: ** this is a **beta** pult module!
 
-[Marko.js](https://github.com/marko-js/marko) is an incredible server-side templating system built Ebay. It supports fast streaming server-side templates with isometric UI component rendering. JavaScript and CSS dependencies are auto-detected based on usage and automatically served to the client.
+[Marko.js](https://github.com/marko-js/marko) is an incredible server-side templating system built by Ebay. It supports fast streaming server-side templates with isometric UI component rendering. JavaScript and CSS dependencies are auto-detected based on usage and automatically served to the client.
 
 This module uses the up-and-coming `4.0.0` version of marko, which is why it's a beta module. Once v4 is officially released, concatapult will be updated to reflect the updated best practices.
 
