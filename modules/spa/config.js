@@ -6,6 +6,10 @@ module.exports = function configClient (vfs, baseConfig, moduleArgs) {
     throw new lib.errors.ModuleError('Module `spa` only takes 1 argument')
   }
 
+  if ( baseConfig.package.addedPultModules.includes('marko') ) {
+    throw new lib.errors.ModuleError('Module `spa` is incompatible with the module `marko`')
+  }
+
   var serverConfig = lib.clone(baseConfig.server)
 
   serverConfig["spa"] = {

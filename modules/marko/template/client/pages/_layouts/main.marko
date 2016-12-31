@@ -1,0 +1,22 @@
+<!doctype>
+<html>
+<head>
+  <title><include(data.title)/> <if(data.title)>|</if> <%= package.name %></title>
+
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <div class="delete-me">
+    <img src="./logo-concatapult.png" />
+    <span>+</span>
+    <img src="./logo-marko.png" />
+  </div>
+  <h1 class="delete-me">A dream come true.</h1>
+
+  <div class="content" if(data.content)>
+    <include(data.content)/>
+  </div>
+
+</body>
+</html>

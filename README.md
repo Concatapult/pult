@@ -6,7 +6,7 @@
 
 - `git`
 - `node >= v6.2.0`
-- `yarn >= 0.16.1` – install / update with `npm install -g yarn`
+- `yarn >= 0.18.1` – install / update with `npm install -g yarn`
 
 
 ## Usage
@@ -84,6 +84,7 @@ I encourage you to read through each file. There is not much going on, and once 
 - [knex](#pult-add-knex)
   - [knex-model](#pult-add-knex-model)
 - [less](#pult-add-less)
+- [marko](#pult-add-marko)
 - [spa](#pult-add-spa)
   - [mithril](#pult-add-mithril)
   - [react](#pult-add-react)
@@ -119,6 +120,17 @@ Generators added:
 ### pult add less
 
 [LESS CSS](http://lesscss.org/) is a SASS alternative that is 100% written in JavaScript. Because of this, the tooling is simpler, faster to install, and faster to deploy.
+
+
+### pult add marko
+
+** WARNING: ** this is a **beta** pult module!
+
+[Marko.js](https://github.com/marko-js/marko) is an incredible server-side templating system built Ebay. It supports fast streaming server-side templates with isometric UI component rendering. JavaScript and CSS dependencies are auto-detected based on usage and automatically served to the client.
+
+This module uses the up-and-coming `4.0.0` version of marko, which is why it's a beta module. Once v4 is officially released, concatapult will be updated to reflect the updated best practices.
+
+** NOTE: ** After adding and starting the server for the first time, you may have to refresh an extra time to see your content!
 
 
 ### pult add spa

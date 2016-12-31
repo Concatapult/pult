@@ -6,6 +6,8 @@ var semverIntersect = require('semver-set').intersect
 var colors = require('../lib/colors')
 var errors = require('../lib/errors')
 
+var IMAGE_EXTS = 'png,jpg'
+
 
 module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
 
@@ -27,7 +29,7 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
   var config = require(`../modules/${moduleName}/config`)
   var moduleConfig = config(vfs, baseConfig, moduleArgs)
 
-  var newPackage = Object.assign({}, baseConfig.package, {
+  var newPackage = Object.assign({}, baseConfig.package, moduleConfig.package || {}, {
     addedPultModules: addedModules.concat([moduleName])
   })
 
@@ -45,8 +47,15 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
 
   writeJSON(vfs, baseConfig.projectRoot + '/package.json', newPackage)
 
+  // First copy non-images with support for templating
   var totalConfig = Object.assign({}, baseConfig, moduleConfig)
-  vfs.copyTpl( $(`modules/${moduleName}/template/{**,.*}`), baseConfig.projectRoot, totalConfig )
+  vfs.copyTpl([
+    $(`modules/${moduleName}/template/{**,*}`),
+    `!**/*.{${IMAGE_EXTS}}`,
+  ], baseConfig.projectRoot, totalConfig)
+
+  // Then straight copy images
+  vfs.copy( $(`modules/${moduleName}/template/**/*.{${IMAGE_EXTS}}`), baseConfig.projectRoot, totalConfig )
 
   return moduleConfig
 }
