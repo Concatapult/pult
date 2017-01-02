@@ -10,18 +10,27 @@ module.exports = function configClient (vfs, baseConfig, moduleArgs) {
 
   serverConfig.routerPipeline.unshift('./style-bundles.js')
 
+
   //
   // Inject link tag into main html file
   //
-  var htmlPath = baseConfig.projectRoot + '/client/public/index.html'
-  var html     = vfs.read(htmlPath)
+  var isSpa   = baseConfig.package.addedPultModules.includes('spa')
+  var isMarko = baseConfig.package.addedPultModules.includes('marko')
 
-  var spaces = html.match(/( *)<\/head>/)[1]
-  var result = html.replace(
-    '</head>',
-    `  <link rel="stylesheet" type="text/css" href="/app-bundle.css">\n${ spaces }</head>`
-  )
-  vfs.write(htmlPath, result)
+  if ( isSpa || isMarko ) {
+    var htmlPath = baseConfig.projectRoot + (
+      isSpa ? '/client/public/index.html' : '/client/pages/_layouts/main.marko'
+    )
+
+    var html     = vfs.read(htmlPath)
+
+    var spaces = html.match(/( *)<\/head>/)[1]
+    var result = html.replace(
+      '</head>',
+      `  <link rel="stylesheet" type="text/css" href="/app-bundle.css">\n${ spaces }</head>`
+    )
+    vfs.write(htmlPath, result)
+  }
 
 
   var config = {
