@@ -1,6 +1,6 @@
 var Path = require('path')
 global.CONFIG = require('./index.json')
-CONFIG.projectFile = (path) => Path.resolve(__dirname, '..', path)
+CONFIG.projectFile = (path) => Path.resolve(__dirname, '../..', path)
 
 
 module.exports = function config (router) {
