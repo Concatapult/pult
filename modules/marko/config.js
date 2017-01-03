@@ -24,7 +24,7 @@ module.exports = function configClient (vfs, baseConfig, moduleArgs) {
     dependencies: {
       "lasso": "^2.8.3",
       "lasso-marko": "^2.1.0",
-      "marko": "https://github.com/marko-js/marko#306e19b",
+      "marko": "v4.0.0-beta.7",
       "marko-magic": "concatapult/marko-magic",
       "browser-refresh-taglib": "*",
     },
