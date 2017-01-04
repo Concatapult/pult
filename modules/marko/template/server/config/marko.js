@@ -35,8 +35,9 @@ exports.mount = function mountMarko (router) {
 //
 require('marko-magic')
 
-// Allow requiring *.marko files
-require('marko/node-require').install()
+require('marko/node-require').install()                      // Allow requiring *.marko files
+require('lasso/node-require-no-op').enable('.less', '.css'); // Allow importing *.css and *.less files
+
 require('marko/compiler/config').meta = true
 require('marko/compiler/config').writeToDisk = isProduction
 
