@@ -1,6 +1,6 @@
 {
   "name": "pult-cli",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "description": "The command line node.js project generator.",
   "main": "index.js",
   "scripts": {
