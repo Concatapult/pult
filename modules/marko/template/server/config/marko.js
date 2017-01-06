@@ -31,8 +31,9 @@ exports.mount = function mountMarko (router) {
 
 
 //
-// Marko Configuration
+// Marko & Lasso Configuration
 //
+var Lasso = require('lasso')
 require('marko-magic')
 
 require('marko/node-require').install()                      // Allow requiring *.marko files
@@ -44,14 +45,25 @@ require('marko/compiler/config').writeToDisk = isProduction
 // Enable res.marko
 require('marko/express')
 
-// Browser Refresh on file changes
-require('marko/browser-refresh').enable()
-require('lasso/browser-refresh').enable('*.marko *.css *.less *.png *.jpeg *.jpg *.gif *.webp *.svg')
+if ( process.env.NODE_ENV === 'development' ) {
+
+  require('marko/browser-refresh').enable() // Refreshes on .marko files
+  require('lasso/browser-refresh').enable('*.marko *.css *.less *.png *.jpeg *.jpg *.gif *.webp *.svg')
+
+  //
+  // Only refresh on client js files, and avoiding fully restarting the server
+  //
+  require('browser-refresh-client')
+    .enableSpecialReload('/client/components/**/*.js')
+    .onFileModified(function(path) {
+      Lasso.handleWatchedFileChanged(path)
+    })
+}
 
 //
 // Lasso bundling (marko-friendly alternative to browserify)
 //
-require('lasso').configure({
+Lasso.configure({
   plugins: [
     require('lasso-marko'), // Auto compile Marko template files
   ],
