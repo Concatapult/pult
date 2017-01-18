@@ -34,7 +34,6 @@ exports.mount = function mountMarko (router) {
 // Marko & Lasso Configuration
 //
 var Lasso = require('lasso')
-require('marko-magic')
 
 require('marko/node-require').install()                      // Allow requiring *.marko files
 require('lasso/node-require-no-op').enable('.less', '.css'); // Allow importing *.css and *.less files
@@ -47,11 +46,11 @@ require('marko/express')
 
 if ( process.env.NODE_ENV === 'development' ) {
 
-  require('marko/browser-refresh').enable() // Refreshes on .marko files
+  require('marko/browser-refresh').enable() // Refreshes on .marko file changes
   require('lasso/browser-refresh').enable('*.marko *.css *.less *.png *.jpeg *.jpg *.gif *.webp *.svg')
 
   //
-  // Only refresh on client js files, and avoiding fully restarting the server
+  // Only refresh on client js files, i.e. don't fully restart the node server
   //
   require('browser-refresh-client')
     .enableSpecialReload('/client/components/**/*.js')
@@ -65,6 +64,7 @@ if ( process.env.NODE_ENV === 'development' ) {
 //
 Lasso.configure({
   plugins: [
+    require('lasso-less'),  // Auto compile LESS CSS files
     require('lasso-marko'), // Auto compile Marko template files
   ],
 
