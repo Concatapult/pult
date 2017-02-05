@@ -16,7 +16,7 @@ module.exports = function configClient (vfs, baseConfig, moduleArgs) {
 
   var config = {
     dependencies: {
-      "mithril": "^0.2.3",
+      "mithril": "^1.0.0",
     },
     server: serverConfig,
   }

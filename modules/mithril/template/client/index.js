@@ -9,18 +9,19 @@ window.App = {}
 //
 // Client-side routing
 //
-m.route.mode = 'pathname'
+// See docs here: http://mithril.js.org/route.html#typical-usage
+//
+m.route.prefix = '' // No prefix for full pushstate
+
 m.route(document.getElementById('app'), '/', {
 
   '/': {
-    // Controllers are optional
-    // controller: function () {},
 
     view: function (ctrl) {
-      return m('.app', [
+      return m('.app',
         m('h1', 'Hello from Mithril!'),
-        m.component(ExampleComponent, { title: 'Welcome to my app!' })
-      ])
+        m(ExampleComponent, { title: 'Welcome to my app!' })
+      )
     }
   }
 
