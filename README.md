@@ -14,9 +14,8 @@
 ## Usage
 
 ```bash
-# install with either yarn or npm:
+# install with either yarn:
 $ yarn global add pult-cli
-$ npm install -g pult-cli
 
 # make a project, and jump in:
 $ pult new my-project
@@ -27,9 +26,8 @@ $ pult add spa
 $ pult add react
 $ pult add ... # See "Modules" section
 
-# start up your server using whichever of the below you prefer:
+# start up your server:
 $ yarn start
-$ npm start
 ```
 
 See the "Modules" section for all the different tech you can automatically add to your app.
