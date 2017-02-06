@@ -14,7 +14,7 @@
 ## Usage
 
 ```bash
-# install with either yarn:
+# install with yarn:
 $ yarn global add pult-cli
 
 # make a project, and jump in:
