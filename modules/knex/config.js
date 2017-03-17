@@ -1,34 +1,35 @@
 var lib = require('../../lib')
 
+module.exports =  {
+  maxCLIArgs: 1,
+  pultModuleDeps: [],
+  pultModuleConflicts: [],
+  get: function get (vfs, baseConfig, moduleArgs) {
 
-module.exports = function configKnex (vfs, baseConfig, moduleArgs) {
-  if ( moduleArgs.length >= 2 ) {
-    throw new lib.errors.ModuleError('Module `knex` only takes 1 argument')
-  }
-
-  var dialect = dialectMap[ moduleArgs[0] ]
-  if ( ! dialect ) {
-    let options = Object.keys(driverMap).sort()
-    throw new lib.errors.ModuleError(`Module ${
-      lib.c.subject('knex')
-    } needs a dialect. Options are:\n\n    ${
-      options.join(', ')
-    }\n\nUpon choosing, re-run the command like this:\n\n    $ pult add knex postgres`)
-  }
-
-  var config = {
-
-    client: driverMap[dialect],
-
-    dependencies: {
-      knex: '^0.12.5',
-      [driverMap[dialect]]: '*',
+    var dialect = dialectMap[ moduleArgs[0] ]
+    if ( ! dialect ) {
+      let options = Object.keys(driverMap).sort()
+      throw new lib.errors.ModuleError(`Module ${
+        lib.c.subject('knex')
+      } needs a dialect. Options are:\n\n    ${
+        options.join(', ')
+      }\n\nUpon choosing, re-run the command like this:\n\n    $ pult add knex postgres`)
     }
+
+    var config = {
+
+      client: driverMap[dialect],
+
+      dependencies: {
+        knex: '^0.12.5',
+        [driverMap[dialect]]: '*',
+      }
+    }
+
+    config.installs = Object.keys(config.dependencies)
+
+    return config
   }
-
-  config.installs = Object.keys(config.dependencies)
-
-  return config
 }
 
 // Taken from https://github.com/tgriesser/knex/tree/3609de76b34cb9ed6171505f3b614c0526c0e9ca/src/dialects

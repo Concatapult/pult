@@ -7,6 +7,7 @@ var errors = require('./lib/errors')
 var exec = require('./lib/exec')
 var colors = require('./lib/colors')
 
+var fs   = require('fs')
 var Path = require('path')
 var program = require('commander')
 
@@ -33,6 +34,13 @@ program
     module = module.toLowerCase()
     // Wrap everything in co to easily catch errors
     co(function * () {
+
+      try {
+        fs.accessSync( Path.resolve(process.cwd(), `..`, `modules/${module}/config.js` ) )
+      }
+      catch (e) {
+        throw new errors.NonexistentModule(module)
+      }
 
       var config = {
         package: require( Path.resolve(process.cwd(), 'package.json')),
