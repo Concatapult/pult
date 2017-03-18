@@ -36,7 +36,7 @@ program
     co(function * () {
 
       try {
-        fs.accessSync( Path.resolve(process.cwd(), `..`, `modules/${module}/config.js` ) )
+        fs.accessSync( Path.resolve(__dirname,`modules/${module}/config.js` ) )
       }
       catch (e) {
         throw new errors.NonexistentModule(module)
@@ -82,6 +82,18 @@ program
       console.log(`Added ${module}! :)`)
     })
       .then(exit(0), exit(1))
+  })
+
+//
+// List all modules
+//
+program
+  .command('modules')
+  .alias('ls')
+  .action(function () {
+    var modules = fs.readdirSync( Path.resolve( __dirname, './modules' ) )
+    var list = require('./commands/list-modules.js')(modules)
+    console.log(list)
   })
 
 //

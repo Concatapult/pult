@@ -42,7 +42,6 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
     addedPultModules: addedModules.concat([moduleName])
   })
 
-
   if ( moduleConfig.dependencies || moduleConfig.devDependencies ) {
     // package-merge wants strings :(
     Object.assign(newPackage, {
