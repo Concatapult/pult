@@ -70,20 +70,19 @@ module.exports = function getListContent(modules) {
   function print(children, indent = '      ', text = '') {
     if ( children.length === 0 ) return ''
     for (var child of children) {
-      text = text
-        .concat(indent)
-        .concat(child.color(child.name))
-        .concat('\n')
-        .concat(print(child.children, `${indent}  `, ''))
+      text += indent
+        + child.color(child.name)
+        + '\n'
+        + print(child.children, `${indent}  `, '')
     }
     return text
   }
 
   return `
-    List of all modules:
+    List of all pult modules:
 ${print(reconcile(depTree))}
 
-    To add a module:
+    To add a pult module:
       $ pult add <module>
 `;
 }

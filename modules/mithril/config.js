@@ -4,7 +4,7 @@ var lib = require('../../lib')
 module.exports =  {
   maxCLIArgs: 0,
   pultModuleDeps: [ 'spa' ],
-  pultModuleConflicts: [ 'marko' ],
+  pultModuleConflicts: [ 'marko', 'react' ],
   get: function get (vfs, baseConfig, moduleArgs) {
 
     var serverConfig = lib.clone(baseConfig.server)
