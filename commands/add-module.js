@@ -1,4 +1,3 @@
-var fs   = require('fs')
 var Path = require('path')
 var semver = require('semver')
 var semverIntersect = require('semver-set').intersect
@@ -19,15 +18,25 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
     throw new errors.ModuleError(`Module ${colors.subject(moduleName)} is already a part of this project.`)
   }
 
-  try {
-    fs.accessSync($(`modules/${moduleName}`))
-  }
-  catch (e) {
-    throw new Error(`pult: Module '${moduleName}' does not exist.`)
+  var config = require(`../modules/${moduleName}/config`);
+
+  if ( moduleArgs.length > config.maxCLIArgs ) {
+    throw new errors.TooManyArguments(moduleName, config.maxCLIArgs)
   }
 
-  var config = require(`../modules/${moduleName}/config`)
-  var moduleConfig = config(vfs, baseConfig, moduleArgs)
+  for (var conflict of config.pultModuleConflicts) {
+    if ( baseConfig.package.addedPultModules.includes(conflict) ) {
+      throw new errors.IncompatibleModule(moduleName, conflict)
+    }
+  }
+
+  for (var dep of config.pultModuleDeps) {
+    if ( ! baseConfig.package.addedPultModules.includes(dep) ) {
+      throw new errors.MissingDependency(dep)
+    }
+  }
+
+  var moduleConfig = config.get(vfs, baseConfig, moduleArgs)
 
   var newPackage = Object.assign({}, baseConfig.package, moduleConfig.package || {}, {
     addedPultModules: addedModules.concat([moduleName])

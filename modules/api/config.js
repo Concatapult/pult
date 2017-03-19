@@ -1,11 +1,16 @@
 var lib = require('../../lib')
 
 
-module.exports = function configKnex (vfs, baseConfig, moduleArgs) {
+module.exports = {
+  maxCLIArgs: 0,
+  pultModuleDeps: [],
+  pultModuleConflicts: [],
+  get: function get (vfs, baseConfig, moduleArgs) {
 
-  var serverConfig = lib.clone(baseConfig.server)
+    var serverConfig = lib.clone(baseConfig.server)
 
-  serverConfig.routerPipeline.unshift('./mount-api.js')
+    serverConfig.routerPipeline.unshift('./mount-api.js')
 
-  return { server: serverConfig }
+    return { server: serverConfig }
+  }
 }

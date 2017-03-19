@@ -7,6 +7,7 @@ var errors = require('./lib/errors')
 var exec = require('./lib/exec')
 var colors = require('./lib/colors')
 
+var fs   = require('fs')
 var Path = require('path')
 var program = require('commander')
 
@@ -33,6 +34,13 @@ program
     module = module.toLowerCase()
     // Wrap everything in co to easily catch errors
     co(function * () {
+
+      try {
+        fs.accessSync( Path.resolve(__dirname,`modules/${module}/config.js` ) )
+      }
+      catch (e) {
+        throw new errors.NonexistentModule(module)
+      }
 
       var config = {
         package: require( Path.resolve(process.cwd(), 'package.json')),
@@ -74,6 +82,18 @@ program
       console.log(`Added ${module}! :)`)
     })
       .then(exit(0), exit(1))
+  })
+
+//
+// List all modules
+//
+program
+  .command('modules')
+  .alias('ls')
+  .action(function () {
+    var modules = fs.readdirSync( Path.resolve( __dirname, './modules' ) )
+    var list = require('./commands/list-modules.js')(modules)
+    console.log(list)
   })
 
 //
