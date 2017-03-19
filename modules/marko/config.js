@@ -19,10 +19,11 @@ module.exports = {
       },
       dependencies: {
         "less": "^2.7",
-        "lasso": "^2.8.3",
-        "lasso-marko": "^2.1.0",
-        "lasso-less": "^2.1.0",
-        "marko": "v4.0.0-rc.3",
+        "lasso": "^2.11",
+        "lasso-marko": "^2.3",
+        "lasso-less": "^2.1",
+        "marko": "^4.1.2",
+        "marko-magic": "Concatapult/marko-magic",
         "browser-refresh-taglib": "*",
       },
       devDependencies: {

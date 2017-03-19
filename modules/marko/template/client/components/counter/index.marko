@@ -1,20 +1,21 @@
-<script>
-module.exports = {
+
+class {
   onInput(input) {
     this.state = {
       count: input.count
     }
     this.initialCount = input.count
-  },
+  }
   incrementCount() {
     this.state.count++
-  },
+  }
   resetCount() {
     this.state.count = this.initialCount
   }
 }
-</script>
 
-<div>And an example component! Current value: <b>${state.count}</b></div>
-<button on-click('incrementCount')>+</button>
-<button on-click('resetCount')>reset</button>
+<div class="counter">
+  <div>And an example component! Current value: <b>${state.count}</b></div>
+  <button on-click('incrementCount')>+</button>
+  <button on-click('resetCount')>reset</button>
+</div>
