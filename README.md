@@ -133,13 +133,9 @@ Generators added:
 
 ### pult add marko
 
-** WARNING: ** this is a **beta** pult module!
-
 [Marko.js](https://github.com/marko-js/marko) is an incredible server-side templating system built by Ebay. It supports fast streaming server-side templates with isometric UI component rendering. JavaScript and CSS dependencies are auto-detected based on usage and automatically served to the client.
 
-This module uses the up-and-coming `4.0.0` version of marko, which is why it's a beta module. Once v4 is officially released, concatapult will be updated to reflect the updated best practices.
-
-** NOTE: ** After adding and starting the server for the first time, you may have to refresh an extra time to see your content!
+Marko is best when your project DOES NOT have to be a pure single-page app, but can afford to have multiple pages, perhaps each page being its own mini-app (as most web apps can afford).
 
 
 ### pult add spa
