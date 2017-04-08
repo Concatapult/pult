@@ -1,7 +1,8 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Counter = require('./components/Counter');
 
 ReactDOM.render(
-  <h1>Hello from React!</h1>, // JSX
+  <Counter />, // JSX
   document.getElementById('app')
 );
