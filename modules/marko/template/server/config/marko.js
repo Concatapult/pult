@@ -26,7 +26,7 @@ exports.mount = function mountMarko (router) {
 
   router.use( express.static(publicDir) )
 
-  router.use('/', require('../render-html'))
+  router.use('/', require('../routes'))
 }
 
 
