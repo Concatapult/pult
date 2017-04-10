@@ -1,22 +1,22 @@
 require(TEST_HELPER)
 var request = require('supertest-as-promised')
-var <%%= nameCapitalized %> = require(__server + '/models/<%%= name %>.js')
+var <%%= nameCapitalized %> = require('~/server/models/<%%= name %>.js')
 
 
 describe('<%%= nameCapitalized %> Model', function() {
 
-  beforeEach_(function * () {
-    // yield db.deleteEverything()
+  beforeEach(async function () {
+    // await db.deleteEverything()
   })
 
-  it_("creates and finds", function * () {
+  it("creates and finds", await function () {
     var attrs = { /* TODO: FILL IN */ }
-    var created<%%= nameCapitalized %> = yield <%%= nameCapitalized %>.create(attrs)
+    var created<%%= nameCapitalized %> = await <%%= nameCapitalized %>.create(attrs)
 
     expect( created<%%= nameCapitalized %> ).to.be.a('number')
     expect( created<%%= nameCapitalized %> ).to.containSubset(attrs)
 
-    var fetched = yield <%%= nameCapitalized %>.find( created<%%= nameCapitalized %>.id )
+    var fetched = await <%%= nameCapitalized %>.find( created<%%= nameCapitalized %>.id )
     expect( fetched ).to.deep.equal( created<%%= nameCapitalized %> )
   })
 })

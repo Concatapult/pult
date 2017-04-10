@@ -14,7 +14,8 @@
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "require-self-ref": "^2.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

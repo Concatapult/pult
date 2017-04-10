@@ -1,14 +1,5 @@
 process.env.NODE_ENV = 'test'
 
-// The following allows you to require files independent of
-// the location of your test file.
-// Example:
-//  var User = require(__server + '/models/user.js')
-//
-global.__test   = __dirname
-global.__server = __dirname + '/../server'
-global.__client = __dirname + '/../client'
-
 //
 // Assertions
 //
@@ -47,14 +38,3 @@ TestHelper.createApp = function (loader) {
   }
   return app
 }
-
-//
-// Mocha "helpers" to support coroutines tests
-//
-var Bluebird = require('bluebird')
-
-global.before_ = function (f) { before ( Bluebird.coroutine(f) ) }
-global.beforeEach_ = function (f) { beforeEach ( Bluebird.coroutine(f) ) }
-global.it_ = function (description, f) { it ( description, f && Bluebird.coroutine(f) ) }
-global.xit_ = function (description, f) { xit ( description, f ) }
-global.it_.only = function (description, f) { it.only( description, Bluebird.coroutine(f) ) }

@@ -7,8 +7,8 @@
 ### Requirements
 
 - `git`
-- `node >= v6.2.0`
-- `yarn >= 0.18.1` – install / update with `npm install -g yarn`
+- `node >= v7.8.0`
+- `yarn >= 0.21.3` – install / update with `npm install -g yarn`
 
 
 ## Usage

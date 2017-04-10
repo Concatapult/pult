@@ -1,4 +1,5 @@
 require('dotenv').config()
+require('require-self-ref')
 
 var express = require('express')
 var router = express.Router()
