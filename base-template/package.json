@@ -5,8 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "setup": "node server/config/setup",
-    "start": "nodemon --config server/config/nodemon.json",
-    "test": "./test/run.sh"
+    "start": "echo TODO: Replace me with a production start script && yarn watch",
+    "test": "./test/run.sh",
+    "watch": "nodemon --config server/config/nodemon.json"
   },
   "author": "Concatapult <change-me@example.com>",
   "license": "MIT",

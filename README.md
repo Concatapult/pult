@@ -27,7 +27,7 @@ $ pult add react
 $ pult add ... # See "Modules" section
 
 # start up your server:
-$ yarn start
+$ yarn watch
 ```
 
 See the "Modules" section for all the different tech you can automatically add to your app.

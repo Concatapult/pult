@@ -14,7 +14,8 @@ module.exports = {
     var config = {
       package: {
         scripts: {
-          start: "./node_modules/.bin/browser-refresh server/index.js"
+          start: baseConfig.package.scripts.start,
+          watch: "./node_modules/.bin/browser-refresh server/index.js"
         }
       },
       dependencies: {

@@ -7,7 +7,7 @@ A new project in the making.
 ```
 $ yarn
 $ yarn setup
-$ yarn start
+$ yarn watch
 ```
 
 Now visit [localhost:4000](http://localhost:4000/)
