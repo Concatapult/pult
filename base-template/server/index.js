@@ -29,10 +29,11 @@ router.get('/', function (req, res) {
   `)
 })
 
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'check') {
   //
   // We're in development or production mode;
   // create and run a real server.
+  // 'check' is for pre-commit linting.
   //
   var app = express()
 
