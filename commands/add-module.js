@@ -53,6 +53,9 @@ module.exports = function addModule (vfs, baseConfig, moduleName, moduleArgs) {
   if ( moduleConfig.server ) {
     writeJSON(vfs, baseConfig.projectRoot + '/server/config/index.json', moduleConfig.server)
   }
+  if ( moduleConfig.serverSetup ) {
+    writeJSON(vfs, baseConfig.projectRoot + '/server/config/setup/index.json', moduleConfig.serverSetup)
+  }
 
   writeJSON(vfs, baseConfig.projectRoot + '/package.json', newPackage)
 

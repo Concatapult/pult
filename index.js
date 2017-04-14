@@ -46,6 +46,7 @@ program
         package: require( Path.resolve(process.cwd(), 'package.json')),
         projectRoot: process.cwd(),
         server: require( Path.resolve(process.cwd(), 'server/config/index.json')),
+        serverSetup: require( Path.resolve(process.cwd(), 'server/config/setup/index.json')),
       }
 
       var result = require('./commands/add-module.js')(vfs, config, module, moduleArgs)
@@ -67,6 +68,10 @@ program
         console.log(`    ${ result.installs.join(', ') }`)
       }
 
+      if ( result.serverSetup ) {
+        console.log(`\nIt will also re-run ${ colors.command('yarn setup') }.`)
+      }
+
 
       var response = yield prompt('\nIs this ok? (Y/n) ')
 
@@ -78,6 +83,7 @@ program
       yield call(vfs, 'commit')
 
       if ( result.installs ) { yield exec('yarn') }
+      if ( result.serverSetup ) { yield exec('yarn setup') }
 
       console.log(`Added ${module}! :)`)
     })
