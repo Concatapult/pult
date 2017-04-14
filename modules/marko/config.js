@@ -13,10 +13,9 @@ module.exports = {
 
     var config = {
       package: {
-        scripts: {
-          start: baseConfig.package.scripts.start,
+        scripts: Object.assign({}, baseConfig.package.scripts, {
           watch: "./node_modules/.bin/browser-refresh server/index.js"
-        }
+        })
       },
       dependencies: {
         "less": "^2.7",
@@ -39,8 +38,18 @@ module.exports = {
     // git ignore generated files
     var gitignorePath = baseConfig.projectRoot + '/.gitignore'
     var gitignore     = vfs.read(gitignorePath)
-    vfs.write(gitignorePath, gitignore + '\n*.marko.js\n.cache/\nclient/public/static/\n')
+    vfs.write(gitignorePath, gitignore + gitIgnoreAdditions)
 
     return config
   }
 }
+
+var gitIgnoreAdditions = `
+*.marko.js
+.cache/
+client/public/static/
+client/pages/*/index.js
+client/pages/*/index.browser.js
+client/components/*/index.js
+client/components/*/index.browser.js
+`
