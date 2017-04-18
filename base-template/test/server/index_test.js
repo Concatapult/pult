@@ -1,7 +1,7 @@
 require(TEST_HELPER) // <--- This must be at the top of every test file.
 
-var request = require('supertest-as-promised')
-var routes = require('~/server/index.js')
+var request = require('supertest')
+var routes = require('~/server/index')
 
 describe("The Server", function() {
 
@@ -12,7 +12,7 @@ describe("The Server", function() {
   it("serves an example endpoint", async function () {
 
     //
-    // async / await functions is great for testing :)
+    // async / await functions are great for testing :)
     //
     await request(app)
       .get('/api/tags-example')
