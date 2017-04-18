@@ -4,4 +4,4 @@
 //
 // e.g. require(TEST_HELPER)
 //
-global.TEST_HELPER = __dirname + '/test-helper.js'
+global.TEST_HELPER = __dirname + '/test-helper'

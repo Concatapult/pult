@@ -97,6 +97,7 @@ I encourage you to read through each file. There is not much going on, and once 
 - [spa](#pult-add-spa)
   - [mithril](#pult-add-mithril)
   - [react](#pult-add-react)
+- [typescript](#pult-add-typescript)
 
 TODO: DOCUMENT MORE
 
@@ -156,6 +157,13 @@ This module installs [browserify](http://browserify.org/) and [browserify-middle
 ### pult add cookie-session
 
 Using [cookie sessions](https://github.com/expressjs/cookie-session) is a quick and easy solution for your app's sessions. The session is **encrypted** and stored entirely in a cookie in each user's browser, subtracting the need to set up a sessions database.
+
+
+### pult add typescript
+
+[TypeScript](https://github.com/Microsoft/TypeScript) is a superset of JavaScript that adds type checking and auto-completion. I highly recommend starting all new projects with TypeScript if possible, as it greatly enhances the productivity and maintainability of your projects.
+
+This module will allow you to write and require `.ts` files. Note that TypeScript's `import` / `export` on nodejs translate to `require` and `module.exports`.
 
 
 ## Built-in Generators
