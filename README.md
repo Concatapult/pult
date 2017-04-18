@@ -8,7 +8,7 @@
 
 - `git`
 - `node >= v7.8.0`
-- `yarn >= 0.21.3` – install / update with `npm install -g yarn`
+- `yarn >= 0.22.0` – install / update with `npm install -g yarn`
 
 
 ## Usage
