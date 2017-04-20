@@ -175,6 +175,21 @@ program
       .then(exit(0), exit(1))
   })
 
+//
+// Catch-all (invalid arguments)
+//
+program
+  .command('*')
+  .action(function(){
+    exec(`pult --help`)
+  });
+
+//
+// No arguments
+//
+if(process.argv.length === 2) {
+  exec(`pult --help`)
+}
 
 //
 // Utility
