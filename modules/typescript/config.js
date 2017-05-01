@@ -16,7 +16,7 @@ module.exports = {
 
     var config = {
       package: {
-        script: Object.assign({}, baseConfig.package.scripts, {
+        scripts: Object.assign({}, baseConfig.package.scripts, {
           "pre-commit": "NODE_ENV=check node server/index.js"
         })
       },
