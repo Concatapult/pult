@@ -1,12 +1,13 @@
 var Path = require('path')
+var fs = require('fs')
 var semver = require('semver')
 var semverIntersect = require('semver-set').intersect
 
 var colors = require('../lib/colors')
 var errors = require('../lib/errors')
 
-module.exports = function getListContent(modules) {
-
+module.exports = function getListContent() {
+  var modules = fs.readdirSync( Path.resolve( __dirname, '../modules' ) )
   var package = require( Path.resolve( process.cwd(), 'package.json' ) )
   package.addedPultModules = package.addedPultModules || [];
   var destValMap = {}
@@ -67,7 +68,7 @@ module.exports = function getListContent(modules) {
   }
 
   // Recursively print out colored and indented text for each module
-  function print(children, indent = '      ', text = '') {
+  function print(children, indent = '    ', text = '') {
     if ( children.length === 0 ) return ''
     for (var child of children) {
       text += indent
@@ -79,7 +80,7 @@ module.exports = function getListContent(modules) {
   }
 
   return `
-    List of all pult modules:
+  List of all pult modules:
 ${print(reconcile(depTree))}
 
     To add a pult module:

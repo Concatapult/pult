@@ -29,11 +29,17 @@ var util = require('mem-fs-editor/lib/util')
 // Add a new module
 //
 program
-  .command('add <module> [moduleArgs...]')
+  .command('add [module] [moduleArgs...]')
   .action(function (module, moduleArgs) {
-    module = module.toLowerCase()
     // Wrap everything in co to easily catch errors
     co(function * () {
+      if (!module) {
+        var list = require('./commands/list-modules.js')()
+        console.log(list)
+        return process.exit(0);
+      }
+
+      module = module.toLowerCase()
 
       try {
         fs.accessSync( Path.resolve(__dirname,`modules/${module}/config.js` ) )
@@ -94,12 +100,18 @@ program
 // List all modules
 //
 program
-  .command('modules')
-  .alias('ls')
+  .command('ls')
   .action(function () {
-    var modules = fs.readdirSync( Path.resolve( __dirname, './modules' ) )
-    var list = require('./commands/list-modules.js')(modules)
-    console.log(list)
+    var config = {
+      projectRoot: process.cwd(),
+    }
+    return require('./commands/list-generators.js')(config)
+      .then(generators => {
+        var modules = require('./commands/list-modules.js')()
+        return `${modules}\n${generators}`
+      })
+      .then(console.log)
+      .then(exit(0))
   })
 
 //
@@ -141,14 +153,21 @@ program
 // Generators
 //
 program
-  .command('generate <generatorName> [generatorArgs...]')
+  .command('generate [generatorName] [generatorArgs...]')
   .alias('g')
   .action(function (generatorName, generatorArgs) {
-    generatorName = generatorName.toLowerCase()
 
     var config = {
       projectRoot: process.cwd(),
     }
+
+    if (!generatorName) {
+      return require('./commands/list-generators.js')(config)
+        .then(console.log)
+        .then(exit(0))
+    }
+
+    generatorName = generatorName.toLowerCase()
 
     co(function * () {
 
