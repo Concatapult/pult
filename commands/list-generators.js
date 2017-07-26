@@ -17,11 +17,12 @@ module.exports = function listGenerators (baseConfig, args=[]) {
   )
   .then(generators => `
   List of all available generators:
+
     ${generators}
 
-    Some modules will expose generator(s) upon installation.
+  Some modules will expose generator(s) upon installation.
 
-    To run a generator:
-      $ pult generate <generator>
+  To run a generator:
+    $ pult generate <generator>
 `)
 }

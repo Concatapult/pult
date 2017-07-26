@@ -81,9 +81,10 @@ module.exports = function getListContent() {
 
   return `
   List of all pult modules:
+
 ${print(reconcile(depTree))}
 
-    To add a pult module:
-      $ pult add <module>
+  To add a pult module:
+    $ pult add <module>
 `;
 }

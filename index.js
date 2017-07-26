@@ -108,7 +108,7 @@ program
     return require('./commands/list-generators.js')(config)
       .then(generators => {
         var modules = require('./commands/list-modules.js')()
-        return `${modules}\n${generators}`
+        return `${modules}\n  ----\n${generators}`
       })
       .then(console.log)
       .then(exit(0))
