@@ -171,3 +171,7 @@ This module will allow you to write and require `.ts` files. Note that TypeScrip
 Sometimes you need to generate your own quick configuration for your own project. In that case you can use:
 
     pult g config
+
+## Contributing
+
+Want to add your preferred tech? Need to update something? All modules are specified in the [modules/](./modules) folder and are easy to submit pull requests to.
